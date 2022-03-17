@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, Modal } from 'react-bootstrap';
 
-const ReactModal = () => {
+const ReactModal = ({ pd: { price, image, title, description } }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+            <Button className='w-75' variant="success" onClick={handleShow}>
+                Detail
             </Button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Card.Img className="w-50 m-auto" variant="top" src={image} />
+                <Modal.Body><h1>$ {price}</h1></Modal.Body>
+                <Modal.Body><h4>{title}</h4></Modal.Body>
+                <Modal.Body>{description.length < 150 ? description : description.slice(0, 150)}</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
                     </Button>
                 </Modal.Footer>
             </Modal>
