@@ -5,11 +5,14 @@ import AllProducts from './Components/AllProducts/AllProducts';
 import Menubar from './Components/Menubar/Menubar';
 
 function App() {
-  let itemCount = null;
+  // cart count system with session storage
+  let itemCount;
   const items = JSON.parse(sessionStorage.getItem('productCount'));
   if (items === null) {
+    // console.log(items);
     itemCount = 0;
   } else {
+    // console.log(items);
     itemCount = items;
   }
   const [cartCount, setCartCount] = useState(itemCount);

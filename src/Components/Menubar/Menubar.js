@@ -2,6 +2,7 @@ import React from 'react';
 import './Menubar.css';
 const Menubar = ({ cartCount }) => {
     if (cartCount !== 0) {
+        // console.log('cart count zero er soman na', cartCount);
         JSON.stringify(sessionStorage.setItem('productCount', cartCount));
     }
     const items = JSON.parse(sessionStorage.getItem('productCount'));
